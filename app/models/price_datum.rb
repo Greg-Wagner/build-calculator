@@ -1,0 +1,4 @@
+class PriceDatum < ApplicationRecord
+
+
+end

@@ -1,0 +1,31 @@
+
+<h2> Land / Build Estimate </h2>
+
+Estimate For: <%= @output.client_name %>
+<hr>
+<h3>Land Estimate</h3>
+<hr>
+<p><%= @output.location1 %>
+$<%= @output.location1_min %> - $<%= @output.location1_max %></p>
+
+<p><%= @output.location2 %>
+$<%= @output.location2_min %> - $<%= @output.location2_max %></p>
+
+<p><%= @output.location3 %>
+$<%= @output.location3_min %> - $<%= @output.location3_max %></p>
+
+<hr>
+Total Land Budget: $<%= @output.total_range_min %> - $<%= @output.total_range_max %>
+<hr>
+
+<h3>Build Estimate</h3>
+
+<p>Size of Build <%= @output.sqft %></p>
+<hr>
+Total Build Budget: $<%= @output.build_estimate_min %> - $<%= @output.build_estimate_max %>
+
+<hr>
+<h3>All-in Cost </h3>
+<h4>$<%= @output.total_cost_min %> - $<%= @output.total_cost_max %></h4>
+
+

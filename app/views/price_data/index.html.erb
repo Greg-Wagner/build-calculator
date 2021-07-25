@@ -1,0 +1,18 @@
+<h2>All Price Data</h2>
+
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Median Lot Price</th>
+      <th>Price per Sq Ft</th>
+    </tr>
+    <% @price_data.each do |p| %>
+
+      <tr>
+          <td><%= p.location %></td>
+          <td><%= p.median_lot %></td>
+          <td><%= p.pp_sqft %></td>
+          </tr>
+
+    <% end %>     
+  </table>  

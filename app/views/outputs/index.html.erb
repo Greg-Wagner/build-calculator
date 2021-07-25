@@ -1,0 +1,18 @@
+<h2>All Outputs</h2>
+
+  <table>
+    <tr>
+      <th>Client Name</th>
+      <th>Location 1</th>
+      <th>Square Feet</th>
+    </tr>
+    <% @outputs.each do |p| %>
+
+      <tr>
+          <td><%= link_to p.client_name, p %></td>
+          <td><%= p.location1 %></td>
+          <td><%= p.sqft %></td>
+          </tr>
+
+    <% end %>     
+  </table>  
