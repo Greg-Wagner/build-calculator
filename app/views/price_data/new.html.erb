@@ -1,0 +1,28 @@
+<h2> Add New Pricing Data</h2>
+<%= form_for @price_data do |f| %>
+<%= f.label :location, "Location:"%>
+<%= f.text_field :location %><br>
+
+<%= f.label :average_lot, "Average Lot Price" %>
+<%= f.number_field :average_lot %><br>
+
+<%= f.label :median_lot, "Median Lot Price" %>
+<%= f.number_field :median_lot %><br>
+
+<%= f.label :low_lot, "Low Lot Price" %>
+<%= f.number_field :low_lot %><br>
+
+<%= f.label :high_lot, "High Lot Price" %>
+<%= f.number_field :high_lot %><br>
+
+<%= f.label :pp_sqft, "Price per Sq Ft" %>
+<%= f.number_field :pp_sqft %><br>
+
+<%= f.label :under_one_acre_SP, "Under One Acre Price" %>
+<%= f.number_field :under_one_acre_SP %><br>
+
+<%= f.label :one_to_three_acre_SP, "One to Three Acre Price" %>
+<%= f.number_field :one_to_three_acre_SP %><br>
+
+<%= f.submit "Add New Data" %>
+<% end %>

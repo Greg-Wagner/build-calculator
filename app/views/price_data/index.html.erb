@@ -12,7 +12,8 @@
           <td><%= p.location %></td>
           <td><%= p.median_lot %></td>
           <td><%= p.pp_sqft %></td>
-          </tr>
+          <td><%= button_to 'Delete Record', p, method: :delete %></td>
+      </tr>
 
     <% end %>     
   </table>  

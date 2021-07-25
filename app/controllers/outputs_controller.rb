@@ -65,7 +65,6 @@ class OutputsController < ApplicationController
 
     def output_params
             params.require(:output).permit(:client_name, :sqft, :location1, :location2, :location3)
-
     end
 
 end

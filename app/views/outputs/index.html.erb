@@ -12,7 +12,9 @@
           <td><%= link_to p.client_name, p %></td>
           <td><%= p.location1 %></td>
           <td><%= p.sqft %></td>
-          </tr>
+          <td><%= button_to 'Delete Record', p, method: :delete %></td>
+
+      </tr>
 
     <% end %>     
   </table>  
