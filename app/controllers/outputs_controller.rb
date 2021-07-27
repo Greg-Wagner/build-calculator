@@ -49,7 +49,15 @@ class OutputsController < ApplicationController
         )
 
         redirect_to @output
+
+        # system("wkhtmltopdf http://localhost:/3000/outputs/#{id} output.pdf ")
+
     end
+
+    # def make_pdf
+    #     id = params[:id]
+    #     system("wkhtmltopdf http://localhost:/3000/outputs/22 output.pdf ")
+    # end
 
     def show
         @output = Output.find(params[:id])

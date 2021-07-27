@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :outputs
   resources :price_data
 
+  post '/outputs/make_pdf', to: 'outputs#make_pdf'
+
 end
