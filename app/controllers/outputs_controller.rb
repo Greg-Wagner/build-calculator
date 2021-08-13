@@ -27,6 +27,8 @@ class OutputsController < ApplicationController
             # location3_max: PriceDatum.find(@output.location3).high_lot
         )
 
+        
+
         land_min = [@output.location1_min, @output.location2_min, @output.location3_min].min
         land_max = [@output.location1_max, @output.location2_max, @output.location3_max].max
 
