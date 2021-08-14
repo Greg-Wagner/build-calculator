@@ -48,8 +48,11 @@ class OutputsController < ApplicationController
         @output.update(
             total_cost_min: total_cost_minimum,
             total_cost_max: total_cost_maximum
-        )
+        
 
+
+
+            
         redirect_to @output
 
         # system("wkhtmltopdf http://localhost:/3000/outputs/#{id} output.pdf ")
