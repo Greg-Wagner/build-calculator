@@ -27,7 +27,7 @@ class OutputsController < ApplicationController
             # location3_max: PriceDatum.find(@output.location3).high_lot
         )
 
-        
+
 
         land_min = [@output.location1_min, @output.location2_min, @output.location3_min].min
         land_max = [@output.location1_max, @output.location2_max, @output.location3_max].max
@@ -55,11 +55,6 @@ class OutputsController < ApplicationController
         # system("wkhtmltopdf http://localhost:/3000/outputs/#{id} output.pdf ")
 
     end
-
-    # def make_pdf
-    #     id = params[:id]
-    #     system("wkhtmltopdf http://localhost:/3000/outputs/22 output.pdf ")
-    # end
 
     def show
         @output = Output.find(params[:id])
