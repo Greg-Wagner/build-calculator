@@ -4,25 +4,32 @@
 <%= f.text_field :location %><br>
 
 <%= f.label :average_lot, "Average Lot Price" %>
-<%= f.number_field :average_lot %><br>
+<%= f.number_field :average_lot, step: :any  %><br>
 
 <%= f.label :median_lot, "Median Lot Price" %>
-<%= f.number_field :median_lot %><br>
+<%= f.number_field :median_lot, step: :any  %><br>
 
 <%= f.label :low_lot, "Low Lot Price" %>
-<%= f.number_field :low_lot %><br>
+<%= f.number_field :low_lot, step: :any %><br>
 
 <%= f.label :high_lot, "High Lot Price" %>
-<%= f.number_field :high_lot %><br>
+<%= f.number_field :high_lot, step: :any  %><br>
 
 <%= f.label :pp_sqft, "Price per Sq Ft" %>
-<%= f.number_field :pp_sqft %><br>
+<%= f.number_field :pp_sqft, step: :any %><br>
 
 <%= f.label :under_one_acre_SP, "Under One Acre Price" %>
-<%= f.number_field :under_one_acre_SP %><br>
+<%= f.number_field :under_one_acre_SP, step: :any  %><br>
 
 <%= f.label :one_to_three_acre_SP, "One to Three Acre Price" %>
-<%= f.number_field :one_to_three_acre_SP %><br>
+<%= f.number_field :one_to_three_acre_SP, step: :any  %><br>
+
+Adjusted Price Range (This is what will be shown in estimates) <br>
+<%= f.label :adjusted_low_lot, "Adjusted Low Price:" %>
+<%= f.number_field :adjusted_low_lot, step: :any  %><br>
+
+<%= f.label :adjusted_high_lot, "Adjusted High Price:" %>
+<%= f.number_field :adjusted_high_lot, step: :any  %><br>
 
 <%= f.submit "Add New Data" %>
 <% end %>

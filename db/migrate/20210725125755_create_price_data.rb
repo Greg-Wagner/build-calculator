@@ -9,7 +9,8 @@ class CreatePriceData < ActiveRecord::Migration[6.0]
       t.float :pp_sqft
       t.float :under_one_acre_SP
       t.float :one_to_three_acre_SP
-
+      t.float :adjusted_low_lot
+      t.float :adjusted_high_lot
 
       t.timestamps
     end

@@ -23,7 +23,7 @@ class CreateOutputs < ActiveRecord::Migration[6.0]
       t.float :total_range_max
       t.float :build_estimate_min
       t.float :build_estimate_max
-      t.text :hcl
+      t.integer :hcl
       t.float :total_cost_min
       t.float :total_cost_max
 

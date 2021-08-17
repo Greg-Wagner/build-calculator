@@ -11,29 +11,57 @@ class OutputsController < ApplicationController
 
     def create
         @output = Output.new(output_params)
+        puts output_params
         @output.save
-        @output.update(
-            location1_min: PriceDatum.find_by(location: @output.location1).low_lot,
-            location1_max: PriceDatum.find_by(location: @output.location1).high_lot,
-            location2_min: PriceDatum.find_by(location: @output.location2).low_lot,
-            location2_max: PriceDatum.find_by(location: @output.location2).high_lot,
-            location3_min: PriceDatum.find_by(location: @output.location3).low_lot,
-            location3_max: PriceDatum.find_by(location: @output.location3).high_lot
-            # location1_min: PriceDatum.find(@output.location1).low_lot,
-            # location1_max: PriceDatum.find(@output.location1).high_lot,
-            # location2_min: PriceDatum.find(@output.location2).low_lot,
-            # location2_max: PriceDatum.find(@output.location2).high_lot,
-            # location3_min: PriceDatum.find(@output.location3).low_lot,
-            # location3_max: PriceDatum.find(@output.location3).high_lot
-        )
+        puts @output.hcl
+        #Should really refactor this to remove all the repetition
+        if @output.location1_min_override == nil
+            @output.update(location1_min: PriceDatum.find_by(location: @output.location1).adjusted_low_lot)
+        else 
+            @output.update(location1_min: @output.location1_min_override)
+        end
+
+        if @output.location1_max_override == nil
+            @output.update(location1_max: PriceDatum.find_by(location: @output.location1).adjusted_high_lot)
+        else
+            @output.update(location1_max: @output.location1_max_override)
+        end
+
+        if @output.location2_min_override == nil
+            @output.update(location2_min: PriceDatum.find_by(location: @output.location2).adjusted_low_lot)
+        else 
+            @output.update(location2_min: @output.location2_min_override)
+        end
+        
+        if @output.location2_max_override == nil
+            @output.update(location2_max: PriceDatum.find_by(location: @output.location2).adjusted_high_lot)
+        else
+            @output.update(location2_max: @output.location2_max_override)
+        end
+
+        if @output.location3_min_override == nil
+            @output.update(location3_min: PriceDatum.find_by(location: @output.location3).adjusted_low_lot)
+        else 
+            @output.update(location3_min: @output.location3_min_override)
+        end
+        
+        if @output.location3_max_override == nil
+            @output.update(location3_max: PriceDatum.find_by(location: @output.location3).adjusted_high_lot)
+        else
+            @output.update(location3_max: @output.location3_max_override)
+        end
 
 
 
         land_min = [@output.location1_min, @output.location2_min, @output.location3_min].min
         land_max = [@output.location1_max, @output.location2_max, @output.location3_max].max
 
-        build_min = @output.sqft * 5
-        build_max = @output.sqft * 10
+        build_min = @output.sqft * 300
+        if @output.hcl == 1
+        build_max = @output.sqft * 500
+        else
+        build_max = @output.sqft * 400
+        end
 
         @output.update(
         total_range_min: land_min,
@@ -47,7 +75,7 @@ class OutputsController < ApplicationController
 
         @output.update(
             total_cost_min: total_cost_minimum,
-            total_cost_max: total_cost_maximum
+            total_cost_max: total_cost_maximum)
         
 
 
@@ -72,7 +100,7 @@ class OutputsController < ApplicationController
     private
 
     def output_params
-            params.require(:output).permit(:client_name, :sqft, :location1, :location2, :location3)
+            params.require(:output).permit(:client_name, :sqft, :location1, :location2, :location3, :location1_min_override, :location2_min_override, :location3_min_override, :location1_max_override, :location2_max_override,:location3_max_override, :hcl)
     end
 
 end

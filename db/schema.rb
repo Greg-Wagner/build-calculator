@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_134827) do
     t.float "total_range_max"
     t.float "build_estimate_min"
     t.float "build_estimate_max"
-    t.text "hcl"
+    t.integer "hcl"
     t.float "total_cost_min"
     t.float "total_cost_max"
     t.datetime "created_at", precision: 6, null: false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_07_25_134827) do
     t.float "pp_sqft"
     t.float "under_one_acre_SP"
     t.float "one_to_three_acre_SP"
+    t.float "adjusted_low_lot"
+    t.float "adjusted_high_lot"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
