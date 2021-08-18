@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :outputs
   resources :price_data
+  resources :application_helper
 
-  post '/outputs/make_pdf', to: 'outputs#make_pdf'
+  post '/outputs/create_image', to: 'outputs#create_image'
 
 end

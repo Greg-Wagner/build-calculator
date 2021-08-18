@@ -1,4 +1,6 @@
 class OutputsController < ApplicationController
+    require "htmlcsstoimage"
+
     def index
         @outputs = Output.all
         render :index
@@ -77,15 +79,17 @@ class OutputsController < ApplicationController
             total_cost_min: total_cost_minimum,
             total_cost_max: total_cost_maximum)
         
-
-
-
-            
         redirect_to @output
-
-        # system("wkhtmltopdf http://localhost:/3000/outputs/#{id} output.pdf ")
-
     end
+
+    def create_image
+        client = HTMLCSSToImage.new(user_id: , api_key: )
+
+        html = render_to_string("http://localhost:3000/outputs/60", formats: :html, layout: false)
+        redirect_to HtmlCssToImage.fetch_url(html: html, google_fonts: "Roboto|Roboto+Condensed"), status: :found
+    end
+
+    helper_method :create_image
 
     def show
         @output = Output.find(params[:id])

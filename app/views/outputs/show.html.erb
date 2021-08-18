@@ -121,5 +121,7 @@
             <%=@output.total_cost_max/1000000 %>m
         <% end %>
     </div>
+
+    <%= button_to 'Generate Image', '/outputs/create_image', method: :post %>
 </div>
 
