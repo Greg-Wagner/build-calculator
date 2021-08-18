@@ -1,0 +1,11 @@
+
+<div class="margins">
+    <h2>Welcome</h2>
+
+    <div class="background-box" style="width: 170px" >
+        <%= button_to "Create Estimate", new_output_path, method: :get %>
+        <%= button_to "View Old Estimates", outputs_path, method: :get %>
+        <%= button_to "Add Price Data", new_price_datum_path, method: :get %>
+        <%= button_to "View Database", price_data_path, method: :get %>
+    </div>
+</div>

@@ -17,8 +17,17 @@
  body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12pt;
+    background-color: black;
+    color: whitesmoke;
 }
 
+.background-box {
+    background-color: rgb(39,44,49);
+    padding: 10px;
+}
+.margins {
+    margin: 10px;
+}
 .thick-hr {
     border: none;
     height: 5px;
@@ -32,6 +41,8 @@
 }
 
 #price-estimate {
+    background-color: white;
+    color: black;
     width: 300px;
     padding: 20px;
 }

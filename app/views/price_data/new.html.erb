@@ -1,35 +1,50 @@
-<h2> Add New Pricing Data</h2>
-<%= form_for @price_data do |f| %>
-<%= f.label :location, "Location:"%>
-<%= f.text_field :location %><br>
+<div class="margins">
+    <h2>Land / Build Calculator</h2>
+        <div class="background-box" style="width: 500px">
+            <%= form_for @price_data do |f| %>
+            <p class="alignleft"><%= f.label :location, "Location:"%></p>
+            <p class="alignright"><%= f.text_field :location, required: :true %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :average_lot, "Average Lot Price" %>
-<%= f.number_field :average_lot, step: :any  %><br>
+            <b>Adjusted Price Range</b> (This is what will be shown in estimates) <br><br>
+            <p class="alignleft"><%= f.label :adjusted_low_lot, "Adjusted Low Price:" %></p>
+            <p class="alignright"><%= f.number_field :adjusted_low_lot, step: :any, required: :true %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :median_lot, "Median Lot Price" %>
-<%= f.number_field :median_lot, step: :any  %><br>
+            <p class="alignleft"><%= f.label :adjusted_high_lot, "Adjusted High Price:" %></p>
+            <p class="alignright"><%= f.number_field :adjusted_high_lot, step: :any, required: :true %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :low_lot, "Low Lot Price" %>
-<%= f.number_field :low_lot, step: :any %><br>
+            <b>Optional Data</b><br><br>
+            <p class="alignleft"><%= f.label :average_lot, "Average Lot Price:" %></p>
+            <p class="alignright"><%= f.number_field :average_lot, step: :any  %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :high_lot, "High Lot Price" %>
-<%= f.number_field :high_lot, step: :any  %><br>
+            <p class="alignleft"><%= f.label :median_lot, "Median Lot Price:" %></p>
+            <p class="alignright"><%= f.number_field :median_lot, step: :any  %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :pp_sqft, "Price per Sq Ft" %>
-<%= f.number_field :pp_sqft, step: :any %><br>
+            <p class="alignleft"><%= f.label :low_lot, "Low Lot Price:" %></p>
+            <p class="alignright"><%= f.number_field :low_lot, step: :any %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :under_one_acre_SP, "Under One Acre Price" %>
-<%= f.number_field :under_one_acre_SP, step: :any  %><br>
+            <p class="alignleft"><%= f.label :high_lot, "High Lot Price:" %></p>
+            <p class="alignright"><%= f.number_field :high_lot, step: :any  %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :one_to_three_acre_SP, "One to Three Acre Price" %>
-<%= f.number_field :one_to_three_acre_SP, step: :any  %><br>
+            <p class="alignleft"><%= f.label :pp_sqft, "Price per Sq Ft:" %></p>
+            <p class="alignright"><%= f.number_field :pp_sqft, step: :any %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-Adjusted Price Range (This is what will be shown in estimates) <br>
-<%= f.label :adjusted_low_lot, "Adjusted Low Price:" %>
-<%= f.number_field :adjusted_low_lot, step: :any  %><br>
+            <p class="alignleft"><%= f.label :under_one_acre_SP, "Under One Acre Price:" %></p>
+            <p class="alignright"><%= f.number_field :under_one_acre_SP, step: :any  %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.label :adjusted_high_lot, "Adjusted High Price:" %>
-<%= f.number_field :adjusted_high_lot, step: :any  %><br>
+            <p class="alignleft"><%= f.label :one_to_three_acre_SP, "One to Three Acre Price:" %></p>
+            <p class="alignright"><%= f.number_field :one_to_three_acre_SP, step: :any  %></p>
+            <div style="clear: both; margin: 0pt"></div>
 
-<%= f.submit "Add New Data" %>
-<% end %>
+            <%= f.submit "Add New Data" %>
+            <% end %>
+        </div>
+</div>

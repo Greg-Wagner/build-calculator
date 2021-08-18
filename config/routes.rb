@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   resources :outputs
   resources :price_data
-  resources :application_helper
+
+  root to: 'outputs#welcome', as: :welcome
 
   post '/outputs/create_image', to: 'outputs#create_image'
+  get '/image_test', to: 'outputs#image_test'
 
 end

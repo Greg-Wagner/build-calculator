@@ -14,13 +14,13 @@
         <% if @output.location1_min < 1000000 %>
             <%= @output.location1_min.round(-3)/1000 %>k -
         <% else %>
-            <%=@output.location1_min/1000000.round(1) %>m -
+            <%= (@output.location1_min/1000000).round(1) %>m -
         <% end %>
         $
         <% if @output.location1_max < 1000000 %>
-            <%=@output.location1_max/1000 %>k
+            <%= @output.location1_max.round(-3)/1000 %>k
         <% else %>
-            <%=@output.location1_max/1000000 %>m
+            <%= (@output.location1_max/1000000).round(1) %>m
         <% end %>
         </div>
         <div style="clear: both; margin: 0pt"></div>
@@ -34,13 +34,13 @@
         <% if @output.location2_min < 1000000 %>
             <%= @output.location2_min.round(-3)/1000 %>k -
         <% else %>
-            <%=@output.location2_min/1000000.round(1) %>m -
+            <%= (@output.location2_min/1000000).round(1) %>m -
         <% end %>
         $
         <% if @output.location2_max < 1000000 %>
-            <%=@output.location2_max/1000 %>k
+            <%= @output.location2_max.round(-3)/1000 %>k
         <% else %>
-            <%=@output.location2_max/1000000 %>m
+            <%= (@output.location2_max/1000000).round(1) %>m
         <% end %>
         </div>
         <div style="clear: both; margin: 0pt"></div>
@@ -54,13 +54,13 @@
         <% if @output.location3_min < 1000000 %>
             <%= @output.location3_min.round(-3)/1000 %>k -
         <% else %>
-            <%=@output.location3_min/1000000.round(1) %>m -
+            <%= (@output.location3_min/1000000).round(1) %>m -
         <% end %>
         $
         <% if @output.location3_max < 1000000 %>
-            <%=@output.location3_max/1000 %>k
+            <%= @output.location3_max.round(-3)/1000 %>k
         <% else %>
-            <%=@output.location3_max/1000000 %>m
+            <%= (@output.location3_max/1000000).round(1) %>m
         <% end %>
         </div>
         <div style="clear: both; margin: 0pt"></div>
@@ -71,13 +71,13 @@
         <% if @output.total_range_min < 1000000 %>
             <%= @output.total_range_min.round(-3)/1000 %>k -
         <% else %>
-            <%=@output.total_range_min/1000000.round(1) %>m -
+            <%= (@output.total_range_min/1000000).round(1) %>m -
         <% end %>
         $
         <% if @output.total_range_max < 1000000 %>
-            <%=@output.total_range_max/1000 %>k
+            <%= @output.total_range_max.round(-3)/1000 %>k
         <% else %>
-            <%=@output.total_range_max/1000000 %>m
+            <%= (@output.total_range_max/1000000).round(1) %>m
         <% end %>
     </div>
 
@@ -93,13 +93,13 @@
         <% if @output.build_estimate_min < 1000000 %>
             <%= @output.build_estimate_min.round(-3)/1000 %>k -
         <% else %>
-            <%=@output.build_estimate_min/1000000.round(1) %>m -
+            <%= (@output.build_estimate_min/1000000).round(1) %>m -
         <% end %>
         $
         <% if @output.build_estimate_max < 1000000 %>
-            <%=@output.build_estimate_max/1000 %>k
+            <%= @output.build_estimate_max.round(-3)/1000 %>k
         <% else %>
-            <%=@output.build_estimate_max/1000000 %>m
+            <%= (@output.build_estimate_max/1000000).round(1) %>m
         <% end %>
     </div>
 
@@ -112,13 +112,13 @@
         <% if @output.total_cost_min < 1000000 %>
             <%= @output.total_cost_min.round(-3)/1000 %>k -
         <% else %>
-            <%=@output.total_cost_min/1000000.round(1) %>m -
+            <%= (@output.total_cost_min/1000000).round(1) %>m -
         <% end %>
         $
         <% if @output.total_cost_max < 1000000 %>
-            <%=@output.total_cost_max/1000 %>k
+            <%= @output.total_cost_max.round(-3)/1000 %>k
         <% else %>
-            <%=@output.total_cost_max/1000000 %>m
+            <%= (@output.total_cost_max/1000000).round(1) %>m
         <% end %>
     </div>
 

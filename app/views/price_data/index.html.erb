@@ -1,19 +1,35 @@
-<h2>All Price Data</h2>
+<div class="margins">
+<h2>Price Data</h2>
 
-  <table>
+  <table class="table table-dark table-sm">
     <tr>
       <th>Location</th>
       <th>Median Lot Price</th>
-      <th>Price per Sq Ft</th>
+      <th>Average Lot Price</th>
+      <th>Low Lot Price</th>
+      <th>High Lot Price</th>
+      <th>Price Per SqFt</th>
+      <th>Under 1 Acre</th>
+      <th>1-3 Acres</th>
+      <th>Adjusted Low Price</th>
+      <th>Adjusted High Price</th>
     </tr>
     <% @price_data.each do |p| %>
 
       <tr>
           <td><%= p.location %></td>
-          <td><%= p.median_lot %></td>
-          <td><%= p.pp_sqft %></td>
+          <td><%= number_to_currency(p.median_lot) %></td>
+          <td><%= number_to_currency(p.average_lot) %></td>
+          <td><%= number_to_currency(p.low_lot) %></td>
+          <td><%= number_to_currency(p.high_lot) %></td>
+          <td><%= number_to_currency(p.pp_sqft) %></td>
+          <td><%= number_to_currency(p.under_one_acre_SP) %></td>
+          <td><%= number_to_currency(p.one_to_three_acre_SP) %></td>
+          <td><%= number_to_currency(p.adjusted_high_lot) %></td>
+          <td><%= number_to_currency(p.adjusted_low_lot) %></td>
           <td><%= button_to 'Delete Record', p, method: :delete %></td>
       </tr>
 
     <% end %>     
   </table>  
+</div>

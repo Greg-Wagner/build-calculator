@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BuildCalculator</title>
+    <title>Build Calculator</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<html>
+  <head>
+    <title>Tradr</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/"><%= image_tag ("buildable_logo_large") %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Create Estimate", new_output_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "View Old Estimates", outputs_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+      <%= link_to "Add Price Data", new_price_datum_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+      <%= link_to "View Database", price_data_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>
