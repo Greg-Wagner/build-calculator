@@ -116,6 +116,7 @@ class OutputsController < ApplicationController
 
     def create_image
 
+        client = HTMLCSSToImage.new(user_id: , api_key:  )
 
         html = render_to_string("/outputs/image_test", formats: :html, layout: false)
         image = client.create_image(html, css: "/stylesheets/application.css")

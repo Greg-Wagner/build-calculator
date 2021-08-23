@@ -22,6 +22,6 @@ class PriceDataController < ApplicationController
     private
 
     def price_datum_params
-            params.require(:price_datum).permit(:location, :average_lot, :median_lot, :low_lot, :high_lot, :pp_sqft, :under_one_acre_SP, :one_to_three_acre_SP, :adjusted_high_lot, :adjusted_low_lot)
+            params.require(:price_datum).permit(:location, :adjusted_low_lot, :adjusted_high_lot)
     end
 end

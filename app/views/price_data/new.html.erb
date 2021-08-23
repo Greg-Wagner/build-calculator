@@ -6,42 +6,13 @@
             <p class="alignright"><%= f.text_field :location, required: :true %></p>
             <div style="clear: both; margin: 0pt"></div>
 
-            <b>Adjusted Price Range</b> (This is what will be shown in estimates) <br><br>
+            <b>Price Range</b><br><br>
             <p class="alignleft"><%= f.label :adjusted_low_lot, "Adjusted Low Price:" %></p>
             <p class="alignright"><%= f.number_field :adjusted_low_lot, step: :any, required: :true %></p>
             <div style="clear: both; margin: 0pt"></div>
 
             <p class="alignleft"><%= f.label :adjusted_high_lot, "Adjusted High Price:" %></p>
             <p class="alignright"><%= f.number_field :adjusted_high_lot, step: :any, required: :true %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <b>Optional Data</b><br><br>
-            <p class="alignleft"><%= f.label :average_lot, "Average Lot Price:" %></p>
-            <p class="alignright"><%= f.number_field :average_lot, step: :any  %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <p class="alignleft"><%= f.label :median_lot, "Median Lot Price:" %></p>
-            <p class="alignright"><%= f.number_field :median_lot, step: :any  %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <p class="alignleft"><%= f.label :low_lot, "Low Lot Price:" %></p>
-            <p class="alignright"><%= f.number_field :low_lot, step: :any %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <p class="alignleft"><%= f.label :high_lot, "High Lot Price:" %></p>
-            <p class="alignright"><%= f.number_field :high_lot, step: :any  %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <p class="alignleft"><%= f.label :pp_sqft, "Price per Sq Ft:" %></p>
-            <p class="alignright"><%= f.number_field :pp_sqft, step: :any %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <p class="alignleft"><%= f.label :under_one_acre_SP, "Under One Acre Price:" %></p>
-            <p class="alignright"><%= f.number_field :under_one_acre_SP, step: :any  %></p>
-            <div style="clear: both; margin: 0pt"></div>
-
-            <p class="alignleft"><%= f.label :one_to_three_acre_SP, "One to Three Acre Price:" %></p>
-            <p class="alignright"><%= f.number_field :one_to_three_acre_SP, step: :any  %></p>
             <div style="clear: both; margin: 0pt"></div>
 
             <%= f.submit "Add New Data" %>
