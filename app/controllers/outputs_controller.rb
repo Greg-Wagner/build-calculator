@@ -112,8 +112,9 @@ class OutputsController < ApplicationController
             total_cost_max: total_cost_maximum)
             
         redirect_to @output
-    end
+    end  
 
+    
     def create_image
 
         client = HTMLCSSToImage.new(user_id: , api_key:  )
