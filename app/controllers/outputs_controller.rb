@@ -107,6 +107,7 @@ class OutputsController < ApplicationController
         total_cost_minimum = (@output.build_estimate_min + @output.total_range_min)
         total_cost_maximum = (@output.build_estimate_max + @output.total_range_max)
 
+        
         @output.update(
             total_cost_min: total_cost_minimum,
             total_cost_max: total_cost_maximum)
@@ -114,7 +115,7 @@ class OutputsController < ApplicationController
         redirect_to @output
     end  
 
-    
+
     def create_image
 
         client = HTMLCSSToImage.new(user_id: , api_key:  )
