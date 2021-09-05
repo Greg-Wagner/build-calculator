@@ -1,83 +1,80 @@
 <div id="price-estimate">
     <%= image_tag ("buildable_logo.jpg") %>
 
-    <p>Estimate For: <%= @output.client_name %></p>
-
     <div class="thick-hr"></div>
 
     <p class="price-estimate-header">Land Estimate</p>
     <% if @output.location1 != "N/A" %>
         <div class="hr"></div>
-        <div>
-        <p class="alignleft"><%= @output.location1 %></p>
-        <p class="alignright">$
-        <% if @output.location1_min < 1000000 %>
-            <%= @output.location1_min.round(-3)/1000 %>k -
-        <% else %>
-            <%= (@output.location1_min/1000000).round(1) %>m -
-        <% end %>
-        $
-        <% if @output.location1_max < 1000000 %>
-            <%= @output.location1_max.round(-3)/1000 %>k
-        <% else %>
-            <%= (@output.location1_max/1000000).round(1) %>m
-        <% end %>
-        </div>
+
+        <ul class="location-list">
+            <li class="alignleft"><%= @output.location1 %></li>
+            <li class="alignright">
+            <% if @output.location1_min < 1000000 %>
+                <%= number_to_currency((@output.location1_min.round(-3)/1000), precision: 0) %>k -
+            <% else %>
+                <%= number_to_currency((@output.location1_min/1000000).round(2), precision: 2) %>m -
+            <% end %>
+            <% if @output.location1_max < 1000000 %>
+                <%= number_to_currency((@output.location1_max.round(-3)/1000), precision: 0) %>k
+            <% else %>
+                <%= number_to_currency((@output.location1_max/1000000).round(2), precision: 2) %>m
+            <% end %>
+            </li>
+        </ul>
+
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
 
     <% if @output.location2 != "N/A" %>
         <div class="hr"></div>
-        <div>
-        <p class="alignleft"><%= @output.location2 %></p>
-        <p class="alignright">$
-        <% if @output.location2_min < 1000000 %>
-            <%= @output.location2_min.round(-3)/1000 %>k -
-        <% else %>
-            <%= (@output.location2_min/1000000).round(1) %>m -
-        <% end %>
-        $
-        <% if @output.location2_max < 1000000 %>
-            <%= @output.location2_max.round(-3)/1000 %>k
-        <% else %>
-            <%= (@output.location2_max/1000000).round(1) %>m
-        <% end %>
-        </div>
+        <ul class="location-list">
+            <li class="alignleft"><%= @output.location2 %></li>
+            <li class="alignright">
+            <% if @output.location2_min < 1000000 %>
+                <%= number_to_currency((@output.location2_min.round(-3)/1000), precision: 0) %>k -
+            <% else %>
+                <%= number_to_currency((@output.location2_min/1000000).round(2), precision: 2) %>m -
+            <% end %>
+            <% if @output.location2_max < 1000000 %>
+                <%= number_to_currency((@output.location2_max.round(-3)/1000), precision: 0) %>k
+            <% else %>
+                <%= number_to_currency((@output.location2_max/1000000).round(2), precision: 2) %>m
+            <% end %>
+            </li>
+        </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
 
         <% if @output.location3 != "N/A" %>
         <div class="hr"></div>
-        <div>
-        <p class="alignleft"><%= @output.location3 %></p>
-        <p class="alignright">$
-        <% if @output.location3_min < 1000000 %>
-            <%= @output.location3_min.round(-3)/1000 %>k -
-        <% else %>
-            <%= (@output.location3_min/1000000).round(1) %>m -
-        <% end %>
-        $
-        <% if @output.location3_max < 1000000 %>
-            <%= @output.location3_max.round(-3)/1000 %>k
-        <% else %>
-            <%= (@output.location3_max/1000000).round(1) %>m
-        <% end %>
-        </div>
+        <ul class="location-list">
+            <li class="alignleft"><%= @output.location3 %></li>
+            <li class="alignright">
+            <% if @output.location3_min < 1000000 %>
+                <%= number_to_currency((@output.location3_min.round(-3)/1000), precision: 0) %>k -
+            <% else %>
+                <%= number_to_currency((@output.location3_min/1000000).round(2), precision: 2) %>m -
+            <% end %>
+            <% if @output.location3_max < 1000000 %>
+                <%= number_to_currency((@output.location3_max.round(-3)/1000), precision: 0) %>k
+            <% else %>
+                <%= number_to_currency((@output.location3_max/1000000).round(2), precision: 2) %>m
+            <% end %>
+            </li>
+        </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
-
-    <div class="totalbox"; style="background-color: rgb(73,216,112)">
-        $
+    <div class="totalbox"; style="background-color: rgb(73,216,112); margin-top: 10px">
         <% if @output.total_range_min < 1000000 %>
-            <%= @output.total_range_min.round(-3)/1000 %>k -
+            <%= number_to_currency((@output.total_range_min.round(-3)/1000), precision: 0) %>k -
         <% else %>
-            <%= (@output.total_range_min/1000000).round(1) %>m -
+            <%= number_to_currency((@output.total_range_min/1000000).round(2), precision: 2) %>m -
         <% end %>
-        $
         <% if @output.total_range_max < 1000000 %>
-            <%= @output.total_range_max.round(-3)/1000 %>k
+            <%= number_to_currency((@output.total_range_max.round(-3)/1000), precision: 0) %>k
         <% else %>
-            <%= (@output.total_range_max/1000000).round(1) %>m
+            <%= number_to_currency((@output.total_range_max/1000000).round(2), precision: 2) %>m
         <% end %>
     </div>
 
@@ -89,17 +86,15 @@
     <p class="alignright"><%= number_with_delimiter(@output.sqft.round(0), :delimiter => ',') %> Square Feet</p>
     <div style="clear: both; margin: 0pt"></div>
     <div class="totalbox"; style="background-color: rgb(237,225,88)">
-        $
         <% if @output.build_estimate_min < 1000000 %>
-            <%= @output.build_estimate_min.round(-3)/1000 %>k -
+            <%= number_to_currency((@output.build_estimate_min.round(-3)/1000), precision: 0) %>k -
         <% else %>
-            <%= (@output.build_estimate_min/1000000).round(1) %>m -
+            <%= number_to_currency((@output.build_estimate_min/1000000).round(2), precision: 2) %>m -
         <% end %>
-        $
         <% if @output.build_estimate_max < 1000000 %>
-            <%= @output.build_estimate_max.round(-3)/1000 %>k
+            <%= number_to_currency((@output.build_estimate_max.round(-3)/1000), precision: 0) %>k
         <% else %>
-            <%= (@output.build_estimate_max/1000000).round(1) %>m
+            <%= number_to_currency((@output.build_estimate_max/1000000).round(2), precision: 2) %>m
         <% end %>
     </div>
 
@@ -108,17 +103,15 @@
     <p class="price-estimate-header">All-in Cost</p>
 
     <div class="totalbox"; style="background-color: rgb(0,0,0); color: rgb(255,255,255)">
-        $
         <% if @output.total_cost_min < 1000000 %>
-            <%= @output.total_cost_min.round(-3)/1000 %>k -
+            <%= number_to_currency((@output.total_cost_min.round(-3)/1000), precision: 0) %>k -
         <% else %>
-            <%= (@output.total_cost_min/1000000).round(1) %>m -
+            <%= number_to_currency((@output.total_cost_min/1000000).round(2), precision: 2) %>m -
         <% end %>
-        $
         <% if @output.total_cost_max < 1000000 %>
-            <%= @output.total_cost_max.round(-3)/1000 %>k
+            <%= number_to_currency((@output.total_cost_max.round(-3)/1000), precision: 0) %>k
         <% else %>
-            <%= (@output.total_cost_max/1000000).round(1) %>m
+            <%= number_to_currency((@output.total_cost_max/1000000).round(2), precision: 2) %>m
         <% end %>
     </div>
 

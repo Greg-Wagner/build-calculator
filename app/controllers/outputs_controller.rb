@@ -107,21 +107,22 @@ class OutputsController < ApplicationController
         total_cost_minimum = (@output.build_estimate_min + @output.total_range_min)
         total_cost_maximum = (@output.build_estimate_max + @output.total_range_max)
 
-        
         @output.update(
             total_cost_min: total_cost_minimum,
             total_cost_max: total_cost_maximum)
-            
+        
         redirect_to @output
+        # create_image
+        
     end  
 
 
     def create_image
 
-        client = HTMLCSSToImage.new(user_id: , api_key:  )
+        client = HTMLCSSToImage.new(user_id:  , api_key:  )
 
-        html = render_to_string("/outputs/image_test", formats: :html, layout: false)
-        image = client.create_image(html, css: "/stylesheets/application.css")
+        html = render_to_string("/outputs/show", formats: :html, layout: false, locals: {output: @output})
+        image = client.create_image(html, css: "app/assets/stylesheets/application.css")
         redirect_to image.url
     end
 
