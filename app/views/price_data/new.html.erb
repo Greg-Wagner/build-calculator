@@ -1,6 +1,7 @@
+<% if logged_in? %>
 <div class="margins">
-    <h2>Land / Build Calculator</h2>
-        <div class="background-box" style="width: 500px">
+    <h2>Add Data</h2>
+        <div class="background-box" style="width: 400px">
             <%= form_for @price_data do |f| %>
             <p class="alignleft"><%= f.label :location, "Location:"%></p>
             <p class="alignright"><%= f.text_field :location, required: :true %></p>
@@ -19,3 +20,6 @@
             <% end %>
         </div>
 </div>
+<% else %>
+Please Login to View
+<% end %>

@@ -1,16 +1,17 @@
-<h1>Login</h1>
+<div class="margins">
 
-<%= flash[:notice] if flash[:notice] %>
-<!-- form will POST to '/login' -->
-<%= form_tag(login_path) do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %><br>
-
-  <%= label_tag :password %>
-  <%= password_field_tag :password %><br>
-
-  <%= submit_tag 'Login' %><br>
-<% end %>
-
-OR
-<%= button_to "CREATE NEW ACCOUNT", new_user_path, method: :get %>
+  <h2>Login</h2>
+      <div class="background-box" style="width: 400px">
+    <%= flash[:notice] if flash[:notice] %>
+    <!-- form will POST to '/login' -->
+    <%= form_tag(login_path) do %>
+      <p class="alignleft"><%= label_tag :username %>
+      <p class="alignright"><%= text_field_tag :username %><br>
+      <div style="clear: both; margin: 0pt"></div>
+      <p class="alignleft"><%= label_tag :password %>
+      <p class="alignright"><%= password_field_tag :password %><br>
+      <div style="clear: both; margin: 0pt"></div>
+      <%= submit_tag 'Login' %><br>
+    <% end %>
+  </div>
+</div>

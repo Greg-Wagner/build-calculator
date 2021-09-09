@@ -1,32 +1,18 @@
 
 
-<div id="price-estimate" style="background-color: white;
-    color: black;
-    width: 300px;
-    padding: 20px;">
-    <img src="https://tinyimg.io/i/fyB1Jov.jpg" height="33px" width="225px">
+<% if logged_in? %>
+<div id="price-estimate">
+    <%= image_tag ("buildable_logo.jpg") %>
 
-    <div class="thick-hr" style="
-    border: none;
-    height: 5px;
-    background-color: black;"></div>
+    <div class="thick-hr"></div>
 
-    <p class="price-estimate-header" style="
-    font-weight: bold;
-    padding-top: 12pt">Land Estimate</p>
+    <p class="price-estimate-header">Land Estimate</p>
     <% if @output.location1 != "N/A" %>
-        <div class="hr" style="border: none;
-        height: 2px;
-        background-color: black;"></div>
+        <div class="hr"></div>
 
-        <ul class="location-list" style="
-            list-style: none;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-bottom: 21px;
-            padding-top: 0px;">
-            <li class="alignleft" style="float: left;"><%= @output.location1 %></li>
-            <li class="alignright" style="float: right">
+        <ul class="location-list">
+            <li class="alignleft"><%= @output.location1 %></li>
+            <li class="alignright">
             <% if @output.location1_min < 1000000 %>
                 <%= number_to_currency((@output.location1_min.round(-3)/1000), precision: 0) %>k -
             <% else %>
@@ -44,18 +30,10 @@
     <% end %>
 
     <% if @output.location2 != "N/A" %>
-        <div class="hr" style="
-        border: none;
-        height: 2px;
-        background-color: black;"></div>
-        <ul class="location-list" style="
-            list-style: none;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-bottom: 21px;
-            padding-top: 0px;">
-            <li class="alignleft" style="float: left;"><%= @output.location2 %></li>
-            <li class="alignright" style="float: right;">
+        <div class="hr"></div>
+        <ul class="location-list">
+            <li class="alignleft"><%= @output.location2 %></li>
+            <li class="alignright">
             <% if @output.location2_min < 1000000 %>
                 <%= number_to_currency((@output.location2_min.round(-3)/1000), precision: 0) %>k -
             <% else %>
@@ -72,18 +50,10 @@
     <% end %>
 
         <% if @output.location3 != "N/A" %>
-        <div class="hr" style="
-         border: none;
-         height: 2px;
-         background-color: black;"></div>
-        <ul class="location-list" style="
-            list-style: none;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-bottom: 21px;
-            padding-top: 0px;">
-            <li class="alignleft" style="float: left;"><%= @output.location3 %></li>
-            <li class="alignright" style="float: right;">
+        <div class="hr"></div>
+        <ul class="location-list">
+            <li class="alignleft"><%= @output.location3 %></li>
+            <li class="alignright">
             <% if @output.location3_min < 1000000 %>
                 <%= number_to_currency((@output.location3_min.round(-3)/1000), precision: 0) %>k -
             <% else %>
@@ -98,12 +68,7 @@
         </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
-    <div class="totalbox"; style="background-color: rgb(73,216,112); 
-    padding: 10px ;
-    border-radius: 25px;
-    text-align: center;
-    font-size: 14pt;
-    margin-bottom: 30px;">
+    <div class="totalbox"; style="background-color: rgb(73,216,112); margin-top: 10px">
         <% if @output.total_range_min < 1000000 %>
             <%= number_to_currency((@output.total_range_min.round(-3)/1000), precision: 0) %>k -
         <% else %>
@@ -116,24 +81,14 @@
         <% end %>
     </div>
 
-    <div class="thick-hr" style="
-    border: none;
-    height: 5px;
-    background-color: black;"></div>
+    <div class="thick-hr"></div>
 
-    <p class="price-estimate-header" style="
-    font-weight: bold;
-    padding-top: 12pt">Build Estimate</p>
+    <p class="price-estimate-header">Build Estimate</p>
 
-    <p class="alignleft" style="float: left; padding-top: 0px; margin-top: 0px">Size of Build<p> 
-    <p class="alignright" style="float: right; padding-top: 0px; margin-top: 0px"><%= number_with_delimiter(@output.sqft.round(0), :delimiter => ',') %> Square Feet</p>
+    <p class="alignleft">Size of Build<p> 
+    <p class="alignright"><%= number_with_delimiter(@output.sqft.round(0), :delimiter => ',') %> Square Feet</p>
     <div style="clear: both; margin: 0pt"></div>
-    <div class="totalbox"; style="background-color: rgb(237,225,88);
-    padding: 10px;
-    border-radius: 25px;
-    text-align: center;
-    font-size: 14pt;
-    margin-bottom: 30px;">
+    <div class="totalbox"; style="background-color: rgb(237,225,88)">
         <% if @output.build_estimate_min < 1000000 %>
             <%= number_to_currency((@output.build_estimate_min.round(-3)/1000), precision: 0) %>k -
         <% else %>
@@ -146,22 +101,11 @@
         <% end %>
     </div>
 
-    <div class="thick-hr" style="
-    border: none;
-    height: 5px;
-    background-color: black;"></div>
+    <div class="thick-hr"></div>
 
-    <p class="price-estimate-header" style="
-    font-weight: bold;
-    padding-top: 12pt">All-in Cost</p>
+    <p class="price-estimate-header">All-in Cost</p>
 
-    <div class="totalbox" style="background-color: rgb(0,0,0); 
-    color: rgb(255,255,255);
-    padding: 10px;
-    border-radius: 25px;
-    text-align: center;
-    font-size: 14pt;
-    margin-bottom: 30px;">
+    <div class="totalbox"; style="background-color: rgb(0,0,0); color: rgb(255,255,255)">
         <% if @output.total_cost_min < 1000000 %>
             <%= number_to_currency((@output.total_cost_min.round(-3)/1000), precision: 0) %>k -
         <% else %>
@@ -173,6 +117,10 @@
             <%= number_to_currency((@output.total_cost_max/1000000).round(2), precision: 2) %>m
         <% end %>
     </div>
-</div>
 
+    <%= button_to 'Generate Image', '/outputs/create_image', method: :post %>
+</div>
+<% else %>
+Please Login to View
+<% end %>
 
