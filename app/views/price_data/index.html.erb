@@ -11,8 +11,8 @@
       <% if p.location != "N/A" %>
         <tr>
             <td><%= p.location %></td>
-            <td><%= number_to_currency(p.adjusted_low_lot) %></td>
-            <td><%= number_to_currency(p.adjusted_high_lot) %></td>
+            <td><%= number_to_currency(p.adjusted_low_lot, precision: 0) %></td>
+            <td><%= number_to_currency(p.adjusted_high_lot, precision: 0) %></td>
             <td><%= button_to 'Delete Record', p, method: :delete %></td>
         </tr>
       <% end %>

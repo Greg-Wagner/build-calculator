@@ -1,38 +1,42 @@
-<div class="margins">
-<h2>Client Estimates</h2>
+<% if logged_in? %>
+  <div class="margins">
+    <h2>Client Estimates</h2>
 
-  <table class="table table-dark table-sm">
-    <tr>
-      <th>Client Name</th>
-      <th>Location 1</th>
-      <th>Location 2</th>
-      <th>Location 3</th>
-      <th>Land Low Price</th>
-      <th>Land High Price</th>
-      <th>Square Footage</th>
-      <th>Build Low Cost</th>
-      <th>Build High Cost</th>
-      <th>All-in Low Cost</th>
-      <th>All-in High Cost</th>
-    </tr>
-    <% @outputs.each do |p| %>
+      <table class="table table-dark table-sm">
+        <tr>
+          <th>Client Name</th>
+          <th>Location 1</th>
+          <th>Location 2</th>
+          <th>Location 3</th>
+          <th>Land Low Price</th>
+          <th>Land High Price</th>
+          <th>Square Footage</th>
+          <th>Build Low Cost</th>
+          <th>Build High Cost</th>
+          <th>All-in Low Cost</th>
+          <th>All-in High Cost</th>
+        </tr>
+        <% @outputs.each do |p| %>
 
-      <tr>
-          <td><%= link_to p.client_name, p %></td>
-          <td><%= p.location1 %></td>
-          <td><%= p.location2 %></td>
-          <td><%= p.location3 %></td>
-          <td><%= number_to_currency(p.total_range_min) %></td>
-          <td><%= number_to_currency(p.total_range_max) %></td>
-          <td><%= p.sqft.round(0) %></td>
-          <td><%= number_to_currency(p.build_estimate_min) %></td>
-          <td><%= number_to_currency(p.build_estimate_max) %></td>
-          <td><%= number_to_currency(p.total_range_min + p.build_estimate_min) %></td>
-          <td><%= number_to_currency(p.total_range_max + p.build_estimate_max) %></td>
-          <td><%= button_to 'Delete Record', p, method: :delete %></td>
+          <tr>
+              <td><%= link_to p.client_name, p %></td>
+              <td><%= p.location1 %></td>
+              <td><%= p.location2 %></td>
+              <td><%= p.location3 %></td>
+              <td><%= number_to_currency(p.total_range_min, precision: 0)  %></td>
+              <td><%= number_to_currency(p.total_range_max, precision: 0) %></td>
+              <td><%= p.sqft.round(0) %></td>
+              <td><%= number_to_currency(p.build_estimate_min, precision: 0) %></td>
+              <td><%= number_to_currency(p.build_estimate_max, precision: 0) %></td>
+              <td><%= number_to_currency(p.total_range_min + p.build_estimate_min, precision: 0) %></td>
+              <td><%= number_to_currency(p.total_range_max + p.build_estimate_max, precision: 0) %></td>
+              <td><%= button_to 'Delete Record', p, method: :delete %></td>
 
-      </tr>
+          </tr>
 
-    <% end %>     
-  </table>  
-</div>
+        <% end %>     
+      </table>
+  </div>
+<% else %>
+Please Login to View
+<% end %>

@@ -1,44 +1,48 @@
-<div class="margins">
-    <h2>Land / Build Calculator</h2>
-        <div class="background-box">
-            <%= form_for @output do |f| %>
-            <%= f.label :client_name, "Client Name:"%>
-            <%= f.text_field :client_name, required: :true  %><br>
+<% if logged_in? %>
 
-            <%= f.label :sqft, "Square Feet:" %>
-            <%= f.number_field :sqft, step: :any, required: :true %>
-            <br>
-            
-            <%= f.label :location1, "Location 1:" %>
-            <%= f.collection_select(:location1, @price_data, :location, :location, :selected => "N/A") %>
-            <%= f.label :location1_min_override, "Override Low Price:" %>
-            <%= f.number_field :location1_min_override%>
-            <%= f.label :location1_max_override, "Override High Price:" %>
-            <%= f.number_field :location1_max_override %>
-            <br>
-            
-            <%= f.label :location2, "Location 2:" %>
-            <%= f.collection_select(:location2, @price_data, :location, :location, :selected => "N/A") %>
-            <%= f.label :location2_min_override, "Override Low Price:" %>
-            <%= f.number_field :location2_min_override%>
-            <%= f.label :location2_max_override, "Override High Price:" %>
-            <%= f.number_field :location2_max_override%>
-            
-            <br>
-            <%= f.label :location3, "Location 3:" %>
-            <%= f.collection_select(:location3, @price_data, :location, :location, :selected => "N/A") %>
-            <%= f.label :location3_min_override, "Override Low Price:" %>
-            <%= f.number_field :location3_min_override%>
-            <%= f.label :location3_max_override, "Override High Price:" %>
-            <%= f.number_field :location3_max_override%>
-            <br>
-            High Cost Location?
-            <%= f.label :hcl, "Yes" %>
-            <%= f.check_box :hcl %>
+    <div class="margins">
+        <h2>Land / Build Calculator</h2>
+            <div class="background-box">
+                <%= form_for @output do |f| %>
+                <%= f.label :client_name, "Client Name:"%>
+                <%= f.text_field :client_name, required: :true  %><br>
 
-            <br>
-            <%= f.submit "Generate Estimate" %>
-            <% end %>
-        <div>
+                <%= f.label :sqft, "Square Feet:" %>
+                <%= f.number_field :sqft, step: :any, required: :true %>
+                <br>
+                
+                <%= f.label :location1, "Location 1:" %>
+                <%= f.collection_select(:location1, @price_data, :location, :location, :selected => "N/A") %>
+                <%= f.label :location1_min_override, "Override Low Price:" %>
+                <%= f.number_field :location1_min_override%>
+                <%= f.label :location1_max_override, "Override High Price:" %>
+                <%= f.number_field :location1_max_override %>
+                <br>
+                
+                <%= f.label :location2, "Location 2:" %>
+                <%= f.collection_select(:location2, @price_data, :location, :location, :selected => "N/A") %>
+                <%= f.label :location2_min_override, "Override Low Price:" %>
+                <%= f.number_field :location2_min_override%>
+                <%= f.label :location2_max_override, "Override High Price:" %>
+                <%= f.number_field :location2_max_override%>
+                
+                <br>
+                <%= f.label :location3, "Location 3:" %>
+                <%= f.collection_select(:location3, @price_data, :location, :location, :selected => "N/A") %>
+                <%= f.label :location3_min_override, "Override Low Price:" %>
+                <%= f.number_field :location3_min_override%>
+                <%= f.label :location3_max_override, "Override High Price:" %>
+                <%= f.number_field :location3_max_override%>
+                <br>
+                High Cost Location?
+                <%= f.label :hcl, "Yes" %>
+                <%= f.check_box :hcl %>
 
-<div>
+                <br>
+                <%= f.submit "Generate Estimate" %>
+                <% end %>
+            <div>
+    <div>
+<% else %>
+Please Login to View
+<% end %>

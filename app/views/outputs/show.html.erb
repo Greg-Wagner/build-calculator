@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <div id="price-estimate">
     <%= image_tag ("buildable_logo.jpg") %>
 
@@ -117,4 +118,7 @@
 
     <%= button_to 'Generate Image', '/outputs/create_image', method: :post %>
 </div>
+<% else %>
+Please Login to View
+<% end %>
 

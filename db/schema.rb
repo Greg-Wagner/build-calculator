@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_25_134827) do
+ActiveRecord::Schema.define(version: 2021_09_09_175059) do
 
   create_table "outputs", force: :cascade do |t|
     t.string "client_name"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2021_07_25_134827) do
     t.float "one_to_three_acre_SP"
     t.float "adjusted_low_lot"
     t.float "adjusted_high_lot"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

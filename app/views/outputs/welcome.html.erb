@@ -1,4 +1,4 @@
-
+<% if logged_in? %>
 <div class="margins">
     <h2>Welcome</h2>
 
@@ -9,3 +9,6 @@
         <%= button_to "View Database", price_data_path, method: :get %>
     </div>
 </div>
+<% else %>
+Please Login to View
+<% end %>
