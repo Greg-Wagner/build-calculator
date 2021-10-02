@@ -1,6 +1,6 @@
 class OutputsController < ApplicationController
     require "htmlcsstoimage"
-    helper_method :create_image
+    helper_method :create_image, :is_number?, :convert_format
 
     def self.is_number? (input)
         original_number = input

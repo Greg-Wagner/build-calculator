@@ -39,7 +39,7 @@
             margin-top: 5px;
             margin-bottom: 5px;">
             <li class="alignleft" style="float: left;"><%= @output.location1 %></li>
-            <li class="alignright" style="float: right"><%= OutputsHelper.convert_format(@output.location1_min) %> - <%= OutputsHelper.convert_format(@output.location1_max) %> </li> 
+            <li class="alignright" style="float: right"><%= Outputs.convert_format(@output.location1_min) %> - <%= Outputs.convert_format(@output.location1_max) %> </li> 
         </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
@@ -60,7 +60,7 @@
             margin-top: 5px;
             margin-bottom: 5px;">
             <li class="alignleft" style="float: left;"><%= @output.location2 %></li>
-            <li class="alignright" style="float: right"><%= OutputsHelper.convert_format(@output.location2_min) %> - <%= OutputsHelper.convert_format(@output.location2_max) %> </li> 
+            <li class="alignright" style="float: right"><%= Outputs.convert_format(@output.location2_min) %> - <%= Outputs.convert_format(@output.location2_max) %> </li> 
         </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
@@ -81,7 +81,7 @@
             margin-top: 5px;
             margin-bottom: 5px;">
             <li class="alignleft" style="float: left;"><%= @output.location3 %></li>
-            <li class="alignright" style="float: right"><%= OutputsHelper.convert_format(@output.location3_min) %> - <%= OutputsHelper.convert_format(@output.location3_max) %> </li> 
+            <li class="alignright" style="float: right"><%= Outputs.convert_format(@output.location3_min) %> - <%= Outputs.convert_format(@output.location3_max) %> </li> 
         </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
@@ -93,7 +93,7 @@
     font-size: 7pt;
     margin-top: 5px;
     margin-bottom: 20px;">
-    <%= OutputsHelper.convert_format(@output.total_range_min) %> - <%= OutputsHelper.convert_format(@output.total_range_max) %>
+    <%= Outputs.convert_format(@output.total_range_min) %> - <%= Outputs.convert_format(@output.total_range_max) %>
     </div>
 
     <div class="thick-hr" style="
@@ -113,7 +113,7 @@
     text-align: center;
     font-size: 7pt;
     margin-bottom: 20px;">
-    <%= OutputsHelper.convert_format(@output.build_estimate_min) %> - <%= OutputsHelper.convert_format(@output.build_estimate_max) %>
+    <%= Outputs.convert_format(@output.build_estimate_min) %> - <%= Outputs.convert_format(@output.build_estimate_max) %>
     </div>
 
     <div class="thick-hr" style="
@@ -131,6 +131,6 @@
     text-align: center;
     font-size: 7pt;
     margin-bottom: 20px;">
-    <%= OutputsHelper.convert_format(@output.total_cost_min) %> - <%= OutputsHelper.convert_format(@output.total_cost_max) %>
+    <%= Outputs.convert_format(@output.total_cost_min) %> - <%= Outputs.convert_format(@output.total_cost_max) %>
     </div>
 </div>
