@@ -77,7 +77,7 @@ class OutputsController < ApplicationController
         
         minimum_land_values = [@output.location1_min, @output.location2_min, @output.location3_min]
 
-        land_min = minimum_land_values.select{|value| (value.to_i.to_s == value || value.to_f.to_s == value}.map{|value| value.to_i}.min
+        land_min = minimum_land_values.select{|value| (value.to_i.to_s == value || value.to_f.to_s == value)}.map{|value| value.to_i}.min
 
         maximum_land_values = [@output.location1_max, @output.location2_max, @output.location3_max]
 
