@@ -77,11 +77,11 @@ class OutputsController < ApplicationController
         
         minimum_land_values = [@output.location1_min, @output.location2_min, @output.location3_min]
 
-        land_min = minimum_land_values.select{|value| is_number?(value) == true}.map{|value| value.to_i}.min
+        land_min = minimum_land_values.select{|value| (value.to_i.to_s == value || value.to_f.to_s == value}.map{|value| value.to_i}.min
 
         maximum_land_values = [@output.location1_max, @output.location2_max, @output.location3_max]
 
-        land_max = maximum_land_values.select{|value| is_number?(value) == true}.map{|value| value.to_i}.max
+        land_max = maximum_land_values.select{|value| (value.to_i.to_s == value || value.to_f.to_s == value)}.map{|value| value.to_i}.max
 
 
             build_min = @output.sqft * 300
@@ -98,13 +98,13 @@ class OutputsController < ApplicationController
         build_estimate_max: build_max
         )
         
-        if is_number?(@output.total_range_min)
+        if (@output.total_range_min.to_f.to_s == @output.total_range_min || @output.total_range_min.to_i.to_s == @output.total_range_min )
            total_cost_minimum = (@output.build_estimate_min.to_f + @output.total_range_min.to_f).to_s
         else
             total_cost_minimum = @output.build_estimate_min
         end
 
-        if is_number?(@output.total_range_min)
+        if (@output.total_range_max.to_f.to_s == @output.total_range_max || @output.total_range_max.to_i.to_s == @output.total_range_max )
             total_cost_maximum = (@output.build_estimate_max.to_f + @output.total_range_max.to_f).to_s
         else
             total_cost_maximum = @output.build_estimate_max
