@@ -9,11 +9,11 @@
 
             <b>Price Range</b><br><br>
             <p class="alignleft"><%= f.label :adjusted_low_lot, "Low Price:" %></p>
-            <p class="alignright"><%= f.number_field :adjusted_low_lot, step: :any, required: :true %></p>
+            <p class="alignright"><%= f.text_field :adjusted_low_lot, required: :true %></p>
             <div style="clear: both; margin: 0pt"></div>
 
             <p class="alignleft"><%= f.label :adjusted_high_lot, "High Price:" %></p>
-            <p class="alignright"><%= f.number_field :adjusted_high_lot, step: :any, required: :true %></p>
+            <p class="alignright"><%= f.text_field :adjusted_high_lot, required: :true %></p>
             <div style="clear: both; margin: 0pt"></div>
 
             <%= f.submit "Add New Data" %>

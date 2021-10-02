@@ -22,13 +22,13 @@
 
     <p class="price-estimate-header" style="
     font-weight: bold;">Land Estimate</p>
+    
     <% if @output.location1 != "N/A" %>
         <div class="hr" style="border: none;
         height: 1px;
         background-color: black;
         padding: 0pt;
         margin: 0pt;"></div>
-
 
         <ul class="location-list" style="
             list-style: none;
@@ -39,20 +39,8 @@
             margin-top: 5px;
             margin-bottom: 5px;">
             <li class="alignleft" style="float: left;"><%= @output.location1 %></li>
-            <li class="alignright" style="float: right">
-            <% if @output.location1_min < 1000000 %>
-                <%= number_to_currency((@output.location1_min.round(-3)/1000), precision: 0) %>k -
-            <% else %>
-                <%= number_to_currency((@output.location1_min/1000000).round(2), precision: 2) %>m -
-            <% end %>
-            <% if @output.location1_max < 1000000 %>
-                <%= number_to_currency((@output.location1_max.round(-3)/1000), precision: 0) %>k
-            <% else %>
-                <%= number_to_currency((@output.location1_max/1000000).round(2), precision: 2) %>m
-            <% end %>
-            </li>
+            <li class="alignright" style="float: right"><%= OutputsHelper.convert_format(@output.location1_min) %> - <%= OutputsHelper.convert_format(@output.location1_max) %> </li> 
         </ul>
-
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
 
@@ -62,6 +50,7 @@
         height: 1px;
         background-color: black;
         padding: 0pt"></div>
+
         <ul class="location-list" style="
             list-style: none;
             padding-left: 0px;
@@ -71,28 +60,18 @@
             margin-top: 5px;
             margin-bottom: 5px;">
             <li class="alignleft" style="float: left;"><%= @output.location2 %></li>
-            <li class="alignright" style="float: right;">
-            <% if @output.location2_min < 1000000 %>
-                <%= number_to_currency((@output.location2_min.round(-3)/1000), precision: 0) %>k -
-            <% else %>
-                <%= number_to_currency((@output.location2_min/1000000).round(2), precision: 2) %>m -
-            <% end %>
-            <% if @output.location2_max < 1000000 %>
-                <%= number_to_currency((@output.location2_max.round(-3)/1000), precision: 0) %>k
-            <% else %>
-                <%= number_to_currency((@output.location2_max/1000000).round(2), precision: 2) %>m
-            <% end %>
-            </li>
+            <li class="alignright" style="float: right"><%= OutputsHelper.convert_format(@output.location2_min) %> - <%= OutputsHelper.convert_format(@output.location2_max) %> </li> 
         </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
 
-        <% if @output.location3 != "N/A" %>
+    <% if @output.location3 != "N/A" %>
         <div class="hr" style="
          border: none;
          height: 1px;
          background-color: black;
          padding: 0pt"></div>
+         
         <ul class="location-list" style="
             list-style: none;
             padding-left: 0px;
@@ -102,21 +81,11 @@
             margin-top: 5px;
             margin-bottom: 5px;">
             <li class="alignleft" style="float: left;"><%= @output.location3 %></li>
-            <li class="alignright" style="float: right;">
-            <% if @output.location3_min < 1000000 %>
-                <%= number_to_currency((@output.location3_min.round(-3)/1000), precision: 0) %>k -
-            <% else %>
-                <%= number_to_currency((@output.location3_min/1000000).round(2), precision: 2) %>m -
-            <% end %>
-            <% if @output.location3_max < 1000000 %>
-                <%= number_to_currency((@output.location3_max.round(-3)/1000), precision: 0) %>k
-            <% else %>
-                <%= number_to_currency((@output.location3_max/1000000).round(2), precision: 2) %>m
-            <% end %>
-            </li>
+            <li class="alignright" style="float: right"><%= OutputsHelper.convert_format(@output.location3_min) %> - <%= OutputsHelper.convert_format(@output.location3_max) %> </li> 
         </ul>
         <div style="clear: both; margin: 0pt"></div>
     <% end %>
+
     <div class="totalbox"; style="background-color: rgb(73,216,112); 
     padding: 5px ;
     border-radius: 25px;
@@ -124,16 +93,7 @@
     font-size: 7pt;
     margin-top: 5px;
     margin-bottom: 20px;">
-        <% if @output.total_range_min < 1000000 %>
-            <%= number_to_currency((@output.total_range_min.round(-3)/1000), precision: 0) %>k -
-        <% else %>
-            <%= number_to_currency((@output.total_range_min/1000000).round(2), precision: 2) %>m -
-        <% end %>
-        <% if @output.total_range_max < 1000000 %>
-            <%= number_to_currency((@output.total_range_max.round(-3)/1000), precision: 0) %>k
-        <% else %>
-            <%= number_to_currency((@output.total_range_max/1000000).round(2), precision: 2) %>m
-        <% end %>
+    <%= OutputsHelper.convert_format(@output.total_range_min) %> - <%= OutputsHelper.convert_format(@output.total_range_max) %>
     </div>
 
     <div class="thick-hr" style="
@@ -153,16 +113,7 @@
     text-align: center;
     font-size: 7pt;
     margin-bottom: 20px;">
-        <% if @output.build_estimate_min < 1000000 %>
-            <%= number_to_currency((@output.build_estimate_min.round(-3)/1000), precision: 0) %>k -
-        <% else %>
-            <%= number_to_currency((@output.build_estimate_min/1000000).round(2), precision: 2) %>m -
-        <% end %>
-        <% if @output.build_estimate_max < 1000000 %>
-            <%= number_to_currency((@output.build_estimate_max.round(-3)/1000), precision: 0) %>k
-        <% else %>
-            <%= number_to_currency((@output.build_estimate_max/1000000).round(2), precision: 2) %>m
-        <% end %>
+    <%= OutputsHelper.convert_format(@output.build_estimate_min) %> - <%= OutputsHelper.convert_format(@output.build_estimate_max) %>
     </div>
 
     <div class="thick-hr" style="
@@ -180,17 +131,6 @@
     text-align: center;
     font-size: 7pt;
     margin-bottom: 20px;">
-        <% if @output.total_cost_min < 1000000 %>
-            <%= number_to_currency((@output.total_cost_min.round(-3)/1000), precision: 0) %>k -
-        <% else %>
-            <%= number_to_currency((@output.total_cost_min/1000000).round(2), precision: 2) %>m -
-        <% end %>
-        <% if @output.total_cost_max < 1000000 %>
-            <%= number_to_currency((@output.total_cost_max.round(-3)/1000), precision: 0) %>k
-        <% else %>
-            <%= number_to_currency((@output.total_cost_max/1000000).round(2), precision: 2) %>m
-        <% end %>
+    <%= OutputsHelper.convert_format(@output.total_cost_min) %> - <%= OutputsHelper.convert_format(@output.total_cost_max) %>
     </div>
 </div>
-
-

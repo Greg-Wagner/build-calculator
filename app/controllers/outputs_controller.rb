@@ -18,82 +18,56 @@ class OutputsController < ApplicationController
 
         #Should really refactor this to remove all the repetition
 
-        if @output.location1_min_override == nil
+        if @output.location1_min_override == ""
             @output.update(location1_min: PriceDatum.find_by(location: @output.location1).adjusted_low_lot)
         else 
             @output.update(location1_min: @output.location1_min_override)
         end
 
-        if @output.location1_max_override == nil
+        if @output.location1_max_override == ""
             @output.update(location1_max: PriceDatum.find_by(location: @output.location1).adjusted_high_lot)
         else
             @output.update(location1_max: @output.location1_max_override)
         end
 
-        if @output.location2_min_override == nil
+        if @output.location2_min_override == ""
             @output.update(location2_min: PriceDatum.find_by(location: @output.location2).adjusted_low_lot)
         else 
             @output.update(location2_min: @output.location2_min_override)
         end
         
-        if @output.location2_max_override == nil
+        if @output.location2_max_override == ""
             @output.update(location2_max: PriceDatum.find_by(location: @output.location2).adjusted_high_lot)
         else
             @output.update(location2_max: @output.location2_max_override)
         end
 
-        if @output.location3_min_override == nil
+        if @output.location3_min_override == ""
             @output.update(location3_min: PriceDatum.find_by(location: @output.location3).adjusted_low_lot)
         else 
             @output.update(location3_min: @output.location3_min_override)
         end
         
-        if @output.location3_max_override == nil
+        if @output.location3_max_override == ""
             @output.update(location3_max: PriceDatum.find_by(location: @output.location3).adjusted_high_lot)
         else
             @output.update(location3_max: @output.location3_max_override)
         end
         
-        if (@output.location1 != "N/A" && @output.location2 != "N/A" && @output.location3 != "N/A")
-            land_min = [@output.location1_min, @output.location2_min, @output.location3_min].min
-        elsif (@output.location1 != "N/A" && @output.location2 != "N/A")
-            land_min = [@output.location1_min, @output.location2_min].min
-        elsif (@output.location1 != "N/A" && @output.location3 != "N/A")
-            land_min = [@output.location1_min, @output.location3_min].min
-        elsif (@output.location2 != "N/A" && @output.location3 != "N/A")
-            land_min = [@output.location2_min, @output.location3_min].min
-        elsif (@output.location1 != "N/A")
-            land_min = @output.location1_min
-        elsif (@output.location2 != "N/A")
-            land_min = @output.location2_min
-        elsif (@output.location3 != "N/A")
-            land_min = @output.location3_min
-        else
-            land_min = 0
-        end
-        if (@output.location1 != "N/A" && @output.location2 != "N/A" && @output.location3 != "N/A")
-            land_max = [@output.location1_max, @output.location2_max, @output.location3_max].max
-        elsif (@output.location1 != "N/A" && @output.location2 != "N/A")
-            land_max = [@output.location1_max, @output.location2_max].max
-        elsif (@output.location1 != "N/A" && @output.location3 != "N/A")
-            land_max = [@output.location1_max, @output.location3_max].max
-        elsif (@output.location2 != "N/A" && @output.location3 != "N/A")
-            land_max = [@output.location2_max, @output.location3_max].max
-        elsif (@output.location1 != "N/A")
-            land_max = @output.location1_max
-        elsif (@output.location2 != "N/A")
-            land_max = @output.location2_max
-        elsif (@output.location3 != "N/A")
-            land_max = @output.location3_max
-        else
-            land_max = 0
-        end
+        minimum_land_values = [@output.location1_min, @output.location2_min, @output.location3_min]
 
-        build_min = @output.sqft * 300
+        land_min = minimum_land_values.select{|value| OutputsHelper.is_number?(value) == true}.map{|value| value.to_i}.min
+
+        maximum_land_values = [@output.location1_max, @output.location2_max, @output.location3_max]
+
+        land_max = maximum_land_values.select{|value| OutputsHelper.is_number?(value) == true}.map{|value| value.to_i}.max
+
+
+            build_min = @output.sqft * 300
         if @output.hcl == 1
-        build_max = @output.sqft * 500
+            build_max = @output.sqft * 500
         else
-        build_max = @output.sqft * 400
+            build_max = @output.sqft * 400
         end
 
         @output.update(
@@ -102,9 +76,18 @@ class OutputsController < ApplicationController
         build_estimate_min: build_min,
         build_estimate_max: build_max
         )
+        
+        if OutputsHelper.is_number?(@output.total_range_min)
+           total_cost_minimum = (@output.build_estimate_min.to_f + @output.total_range_min.to_f).to_s
+        else
+            total_cost_minimum = @output.build_estimate_min
+        end
 
-        total_cost_minimum = (@output.build_estimate_min + @output.total_range_min)
-        total_cost_maximum = (@output.build_estimate_max + @output.total_range_max)
+        if OutputsHelper.is_number?(@output.total_range_min)
+            total_cost_maximum = (@output.build_estimate_max.to_f + @output.total_range_max.to_f).to_s
+        else
+            total_cost_maximum = @output.build_estimate_max
+        end
 
         @output.update(
             total_cost_min: total_cost_minimum,
