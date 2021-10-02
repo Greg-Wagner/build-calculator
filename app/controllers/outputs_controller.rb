@@ -14,7 +14,6 @@ class OutputsController < ApplicationController
 
     def create
         @output = Output.new(output_params)
-        puts output_params
         @output.save
 
         #Should really refactor this to remove all the repetition
@@ -111,8 +110,8 @@ class OutputsController < ApplicationController
             total_cost_min: total_cost_minimum,
             total_cost_max: total_cost_maximum)
         
-        # redirect_to @output
-        create_image
+        redirect_to @output
+        # create_image
         
     end  
 
@@ -122,7 +121,7 @@ class OutputsController < ApplicationController
         client = HTMLCSSToImage.new(user_id: ENV["USER_ID"] , api_key: ENV["API_KEY"] )
 
         html = render_to_string("/outputs/show", formats: :html, layout: false, locals: {output: @output})
-        image = client.create_image(html)
+        image = client.create_image(html, google_fonts: "Roboto")
         redirect_to image.url
     end
 
